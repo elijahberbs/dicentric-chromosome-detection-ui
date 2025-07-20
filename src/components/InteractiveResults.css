@@ -1,0 +1,811 @@
+/* Interactive Results Styles */
+.interactive-results {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+  display: flex;
+  flex-direction: column;
+}
+
+.results-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 1.5rem 2rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.back-btn {
+  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 10px rgba(14, 165, 233, 0.3);
+}
+
+.back-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+}
+
+.header-info h2 {
+  margin: 0 0 0.25rem 0;
+  color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.header-info p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+/* Detection Statistics */
+.detection-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  min-width: 100px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card.dicentric {
+  border-left: 4px solid #ef4444;
+}
+
+.stat-card.monocentric {
+  border-left: 4px solid #22c55e;
+}
+
+.stat-card.success-rate {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Main Content */
+.results-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  /* Prevent scroll propagation from child elements */
+  overscroll-behavior: contain;
+}
+
+.image-container {
+  display: flex;
+  gap: 2rem;
+  height: calc(100vh - 200px);
+  position: relative;
+  /* Prevent child scroll from affecting this container */
+  overflow: hidden;
+}
+
+/* Chromosome List Panel */
+.chromosome-list-panel {
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+  /* Prevent scroll propagation */
+  overscroll-behavior: contain;
+  /* Ensure stable positioning */
+  position: relative;
+}
+
+.chromosome-list-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chromosome-list-header h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.chromosome-count {
+  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.chromosome-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  scroll-behavior: smooth;
+  /* Prevent scroll from affecting parent elements */
+  overscroll-behavior: contain;
+  /* Ensure consistent scroll boundaries */
+  position: relative;
+}
+
+.no-chromosomes {
+  text-align: center;
+  color: #64748b;
+  font-style: italic;
+  padding: 2rem;
+}
+
+.chromosome-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  margin-bottom: 0.75rem;
+  background: rgba(248, 250, 252, 0.5);
+}
+
+.chromosome-item:hover {
+  background: rgba(14, 165, 233, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chromosome-item.selected {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.2);
+}
+
+.chromosome-item.dicentric {
+  border-left: 4px solid #ef4444;
+}
+
+.chromosome-item.monocentric {
+  border-left: 4px solid #22c55e;
+}
+
+.chromosome-preview {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chromosome-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chromosome-placeholder {
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.chromosome-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chromosome-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.chromosome-number {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.9rem;
+}
+
+.chromosome-type {
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.chromosome-type.dicentric {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.chromosome-type.monocentric {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.chromosome-type.unknown {
+  background: rgba(100, 116, 139, 0.1);
+  color: #475569;
+}
+
+.chromosome-confidence {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+}
+
+.chromosome-position {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-family: monospace;
+}
+
+.main-image-wrapper {
+  flex: 1;
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  min-width: 0; /* Prevent flex item from growing beyond container */
+}
+
+.analyzed-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Detection Overlay */
+.detection-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.detection-box {
+  position: absolute;
+  border: 2px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+.detection-box.dicentric {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.detection-box.monocentric {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.detection-box:hover,
+.detection-box.hovered {
+  border-width: 3px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+}
+
+.detection-box.dicentric:hover,
+.detection-box.dicentric.hovered {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+.detection-box.monocentric:hover,
+.detection-box.monocentric.hovered {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+/* Selected detection box styles */
+.detection-box.selected {
+  border-color: #ef4444 !important;
+  border-width: 4px !important;
+  background: rgba(239, 68, 68, 0.2) !important;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.6) !important;
+  z-index: 10;
+}
+
+/* Pulse animation for detection box when clicked */
+@keyframes pulseDetection {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.detection-box.clicked {
+  animation: pulseDetection 0.3s ease;
+}
+
+/* Detection Labels */
+.detection-label {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.detection-box:hover .detection-label,
+.detection-box.hovered .detection-label {
+  opacity: 1;
+}
+
+.detection-type {
+  text-transform: capitalize;
+  margin-right: 0.5rem;
+}
+
+.confidence {
+  opacity: 0.8;
+}
+
+/* Detail Panel */
+.detail-panel {
+  position: fixed;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  width: 350px;
+  max-height: calc(100vh - 4rem);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.detail-panel.visible {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.detail-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-header h3 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.classification-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.classification-badge.dicentric {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.classification-badge.monocentric {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.detail-content {
+  padding: 1.5rem;
+}
+
+.detail-image {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.cropped-chromosome {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.no-crop-available {
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  color: #64748b;
+  font-style: italic;
+  text-align: center;
+}
+
+.detail-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row .label {
+  font-weight: 500;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.detail-row .value {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
+}
+
+/* Error State */
+.interactive-results-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.interactive-results-error h3 {
+  margin: 0 0 1rem 0;
+  color: #1e293b;
+  font-size: 1.5rem;
+}
+
+.interactive-results-error p {
+  margin: 0 0 2rem 0;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* Header Controls */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Image Toggle Styles */
+.image-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.toggle-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #475569;
+  margin-right: 0.5rem;
+}
+
+.image-toggle-btn {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #64748b;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 90px;
+}
+
+.image-toggle-btn:hover:not(:disabled) {
+  background: rgba(14, 165, 233, 0.1);
+  border-color: rgba(14, 165, 233, 0.3);
+  color: #0ea5e9;
+  transform: translateY(-1px);
+}
+
+.image-toggle-btn.active {
+  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+  border-color: #0ea5e9;
+  color: white;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
+}
+
+.image-toggle-btn:disabled {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(0, 0, 0, 0.05);
+  color: #cbd5e1;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.same-image-indicator {
+  font-size: 0.8rem;
+  color: #f59e0b;
+  font-weight: 500;
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(245, 158, 11, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+/* Close button for detail panel */
+.close-detail-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(100, 116, 139, 0.1);
+  color: #64748b;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.close-detail-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  transform: scale(1.1);
+}
+
+/* Animation for chromosome item highlight when scrolled to */
+.chromosome-item.highlight-scroll {
+  transform: scale(1.02) !important;
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3) !important;
+  border-color: #0ea5e9 !important;
+  background: rgba(14, 165, 233, 0.15) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* CNN Classification Styles */
+.cnn-classification {
+  margin: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cnn-title {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.cnn-result {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border-radius: 8px;
+}
+
+.cnn-result.dicentric {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+}
+
+.cnn-result.not_dicentric {
+  background: rgba(34, 197, 94, 0.15);
+  color: #16a34a;
+}
+
+.cnn-confidence {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.cnn-classification-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.1rem 0.3rem;
+  border-radius: 6px;
+  margin-top: 0.15rem;
+  display: block;
+}
+
+.cnn-classification-label.dicentric {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+}
+
+.cnn-classification-label.not_dicentric {
+  background: rgba(34, 197, 94, 0.15);
+  color: #16a34a;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .image-container {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .chromosome-list-panel {
+    width: 100%;
+    height: 300px;
+    order: -1;
+  }
+  
+  .detail-panel {
+    position: fixed;
+    top: auto;
+    bottom: 2rem;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+    max-height: 50vh;
+    transform: none;
+  }
+  
+  .detail-panel.visible {
+    transform: none;
+  }
+  
+  .main-image-wrapper {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .header-left {
+    justify-content: center;
+  }
+  
+  .header-controls {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .image-toggle-container {
+    width: 100%;
+    justify-content: center;
+    max-width: 300px;
+  }
+  
+  .detection-stats {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .chromosome-list-panel {
+    height: 250px;
+  }
+  
+  .chromosome-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .chromosome-preview {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-toggle-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    min-width: 80px;
+  }
+  
+  .toggle-label {
+    font-size: 0.85rem;
+  }
+}
