@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dicentric-chromosome-detection-ui/static/css/main.21db27ce.css",
+    "main.js": "/dicentric-chromosome-detection-ui/static/js/main.5c63b2f4.js",
+    "static/js/453.400f064f.chunk.js": "/dicentric-chromosome-detection-ui/static/js/453.400f064f.chunk.js",
+    "index.html": "/dicentric-chromosome-detection-ui/index.html",
+    "main.21db27ce.css.map": "/dicentric-chromosome-detection-ui/static/css/main.21db27ce.css.map",
+    "main.5c63b2f4.js.map": "/dicentric-chromosome-detection-ui/static/js/main.5c63b2f4.js.map",
+    "453.400f064f.chunk.js.map": "/dicentric-chromosome-detection-ui/static/js/453.400f064f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.21db27ce.css",
+    "static/js/main.5c63b2f4.js"
+  ]
+}
